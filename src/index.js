@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import FlightSearch from './components/flight_search_form';
-import FlightList from './components/flight_list';
+import { Header } from "./components/Header";
+import { Home } from "./components/home";
+
+// import FlightSearch from './components/flight_search_form';
+
+// import FlightList from './components/flight_list';
+// import FlightDetail from './components/flight_detail';
 
 const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
 
@@ -18,8 +23,8 @@ var body = {
 		    "slice": [{
 		        "origin": 'NYC',
 		        "destination": 'LAX',
-		        "date": '2017-07-11'
-		        "maxStops": 0,
+		        "date": '2017-07-11',
+		        "maxStops": 1,
 		      },
 		      {
 		        "origin": 'LAX',
@@ -37,12 +42,12 @@ class App extends Component {
 		super(props);
 
 		this.state = { flights: [] };
-		debugger;
+		// debugger;
 		
 
 
 		qpx.getInfo(body, function(error, flights){
-			console.log(flights.data);
+			console.log(flights.trips.data);
 			// this.state.length;
 			// this.setState({ flights });
 			// this.setState({ flights: flights }) syntactic sugar above
@@ -50,10 +55,17 @@ class App extends Component {
 	}
 	render() {
 		return (
-			<div>
-			<flights />
-				<FlightSearch />
-				// <FlightList flights={this.state.flights} />
+			<div className="container">
+				<div className="row">
+					<div className="col-xs-10 col-xs-offset-1">
+						<Header/>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-10 col-xs-offset-1">
+						<Home/>
+					</div>
+				</div>
 			</div>
 		);
 	}
