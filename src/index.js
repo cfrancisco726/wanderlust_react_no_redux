@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Header } from "./components/Header";
-import { Home } from "./components/home";
+import { Home } from "./components/Home";
 
 // import FlightSearch from './components/flight_search_form';
 
@@ -16,6 +16,8 @@ var API = require('qpx-express');
 
 var apiKey = API_KEY;
 var qpx = new API(apiKey);
+
+`${}`
 
 var body = {
 		"request": {
@@ -47,7 +49,7 @@ class App extends Component {
 
 
 		qpx.getInfo(body, function(error, flights){
-			console.log(flights.trips.data);
+			console.log(flights.trips);
 			// this.state.length;
 			// this.setState({ flights });
 			// this.setState({ flights: flights }) syntactic sugar above
