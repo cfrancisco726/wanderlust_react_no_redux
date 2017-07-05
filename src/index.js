@@ -17,8 +17,6 @@ var API = require('qpx-express');
 var apiKey = API_KEY;
 var qpx = new API(apiKey);
 
-`${}`
-
 var body = {
 		"request": {
 		    "passengers": { "adultCount": 1 },
