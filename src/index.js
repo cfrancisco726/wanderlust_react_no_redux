@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
+import NewTripForm from "./components/NewTripForm"
 
 // import FlightSearch from './components/flight_search_form';
 
@@ -57,36 +58,12 @@ class App extends Component {
 	// 		// this.setState({ flights: flights }) syntactic sugar above
 	// 	});
 	// }
-	constructor(){
-		super();
-		this.state = {
-			budget: 0,
-			departure_date: '',
-			arrival_date: '',
-			numOfPeople: '',
-			origin: ''
-		}
-	}
-	handleSubmit(){
-		debugger
-	}
-			render() {
-			return (
-				<form onSubmit={this.handleSubmit.bind(this)}>
-					budget:
-					<input type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}} value={this.state.budget}/>
-					numOfPeople
-					<input type='numeric' onChange={(e)=>this.setState({numOfPeople: e.target.value})}/>
-					Origin:
-					<input type='text' onChange={(e)=>this.setState({origin: e.target.value})}/>
-					Departure Date:
-					<input type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/>
-					Arrival Date:
-					<input type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/>
-					<button type='submit'>submit</button>
-				</form>
-			);
-		}
+
+	render() {
+	return (
+		<NewTripForm />
+	);
+}
 }
 // same as below. fat arrow is equal to function
 // const App = function() {
