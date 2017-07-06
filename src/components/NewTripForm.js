@@ -26,12 +26,12 @@ class NewTripForm extends Component {
           "passengers": { "adultCount": parseInt(`${numOfGuests}`) },
           "slice": [{
               "origin": `${origin}`,
-              "destination": 'LAX',
+              "destination": ['LAX','DEN'],
               "date": `${departure_date}`,
               "maxStops": 0,
             },
             {
-              "origin": 'LAX',
+              "origin": ['LAX','DEN'],
               "destination": `${origin}`,
               "date": `${arrival_date}`
             }
@@ -48,7 +48,7 @@ class NewTripForm extends Component {
     qpx.getInfo(this.reqBody(this.state.origin, this.state.departure_date, this.state.arrival_date, this.state.numOfGuests, this.state.budget), function(error, flights){
 
     let trips = []
-
+    debugger
     flights["trips"]["tripOption"].forEach(function(trip){
 
       let h = {}
