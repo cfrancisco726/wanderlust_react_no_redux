@@ -7,7 +7,7 @@ import NewTripForm from "./components/NewTripForm"
 import Logo from "./components/logo"
 
 
-import NewHotelList from "./components/NewHotelList"
+// import NewHotelList from "./components/NewHotelList"
 
 
 import NavigationBar from './components/navigationBar';
@@ -47,24 +47,8 @@ class Index extends Component {
 	</div>
 	);
 
-}
-}
-
-class App extends Component {
-
-
-	render() {
-		return (
-			<div>
-				<NewTripForm />
-			</div>
-				<div>
-					<NewHotelList />
-			</div>
-		);
 	}
 }
-
 ReactDom.render(
 	<BrowserRouter>
 		<App/>

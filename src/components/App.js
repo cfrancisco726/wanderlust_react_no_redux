@@ -47,9 +47,6 @@ class App extends Component{
       <Main/>
         <hr />
 
-        <h2 className="color">Choose your destiny:</h2>
-
-      <NewTripForm />
     </div>
 
       )
