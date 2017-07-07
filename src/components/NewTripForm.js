@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Form from 'react-router-form'
+
 
 const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
 var API = require('qpx-express');
