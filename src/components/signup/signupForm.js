@@ -1,117 +1,70 @@
-import React from 'react';
-import { browserHistory } from 'react-router';
-import TextFieldGroup from '../common/TextFieldGroup'
-import validateInput from  './validateinput'
-
-class SignupForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
-      errors: {}
-
-    }
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.checkUserExists = this.checkUserExists.bind(this);
-
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-   isValid() {
-    const { errors, isValid } = validateInput(this.state);
-
-    if(!isValid) {
-      this.setState({errors})
-      debugger
-      }
-
-    return isValid
-  }
-
-  checkUserExists(e){
-      const field = e.target.name;
-      const val = e.target.value;
-      if(val !== '') {
-        this.props.isUserExists(val).then(res => {
-
-      })
-    }
-  }
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Card, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 
-  onSubmit(e) {
-    e.preventDefault();
+const SignUpForm = ({
+  onSubmit,
+  onChange,
+  errors,
+  user,
+}) => (
+  <MuiThemeProvider>
+  <Card className="container">
+    <form action="/" onSubmit={onSubmit}>
+      <h2 className="card-heading">Sign Up</h2>
 
-    // if (this.isValid()){
-      this.setState({ errors: {} })
-      this.props.userSignupRequest(this.state).then(
-        () => {},
-        ({ data }) => this.setState({ errors: data })
-       )
+      {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-    // }
-      this.props.addFlashMessage({
-        type: 'success',
-        text: 'you signed up successfully. Welcome!'
-      })
-      browserHistory.push('/')
-    }
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Name"
+          name="name"
+          errorText={errors.name}
+          onChange={onChange}
+          value={user.name}
+        />
+      </div>
 
-  render() {
-    const { errors } = this.state
-    return(
-      <form onSubmit={this.onSubmit}>
-        <h1> Join us! </h1>
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Email"
+          name="email"
+          errorText={errors.email}
+          onChange={onChange}
+          value={user.email}
+        />
+      </div>
 
-        <TextFieldGroup
-          error={errors.username}
-          label="name"
-          onChange={this.onChange}
-          value={this.state.name}
-          field='name'/>
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Password"
+          type="password"
+          name="password"
+          onChange={onChange}
+          errorText={errors.password}
+          value={user.password}
+        />
+      </div>
 
-          <TextFieldGroup
-          error={errors.username}
-          label="email"
-          onChange={this.onChange}
-          value={this.state.email}
-          field='email'/>
+      <div className="button-line">
+        <RaisedButton type="submit" label="Create New Account" primary />
+      </div>
 
-          <TextFieldGroup
-          error={errors.username}
-          label="password"
-          onChange={this.onChange}
-          value={this.state.password}
-          field='password'/>
 
-          <TextFieldGroup
-          error={errors.username}
-          label="password Confirmation"
-          onChange={this.onChange}
-          value={this.state.passwordConfirmation}
-          field='passwordConfirmation'/>
+    </form>
+  </Card>
+</MuiThemeProvider>
+);
 
-        <div className="form-group">
-          <button className="btn btn-primary btn-lg">
-            Sign up
-          </button>
-        </div>
-      </form>
-    )
-  }
-}
+SignUpForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
+};
 
-SignupForm.propTypes = {
-  userSignupRequest: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired,
-  isUserExists: React.PropTypes.func.isRequired
-}
-
-export default SignupForm;
+export default SignUpForm;
