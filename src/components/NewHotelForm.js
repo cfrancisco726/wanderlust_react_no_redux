@@ -12,7 +12,9 @@ class NewHotelForm extends Component {
       budget: 0,
       checkIn: '',
       checkOut: '',
-      rooms: 0,
+      numRooms: 0,
+      numAdults: 0,
+      numChildren: 0,
       longitude: 0,
       latitude: 0
     }
@@ -20,18 +22,34 @@ class NewHotelForm extends Component {
 
   }
 
-  reqBody(budget, checkIn, checkOut, rooms, adults, children, longitude, latitude) {
+  // componentWillMount(){
+  //   var url = "https://api.test.hotelbeds.com/hotel-api/1.0/hotels?availabilityRQ";
+  //   Request.get(url).then((response) => {
+  //     this.setState({
+  //       hotels: response.hotels
+  //     })
+  //   })
+  // }
+
+  // fetch('https://api.test.hotelbeds.com/hotel-api/1.0/hotels')
+  //   .then(function(response){
+  //     return response.json();
+  //   })
+  //   .catch(function(error){
+  //     console.log('Fetch failed', error);
+  //   })
+
+  reqBody(budget, checkIn, checkOut, numRooms, numAdults, numChildren, longitude, latitude) {
     return({"request": {
         "stay": {
           "checkIn": `${checkIn}`,
           "checkOut": `${checkOut}`,
-          "shiftDays": "2"
         },
         "occupancies": [
           {
-            "rooms": `${rooms}`,
-            "adults": `${adults}`,
-            "children": `${children}`,
+            "rooms": `${numRooms}`,
+            "adults": `${numAdults}`,
+            "children": `${numChildren}`,
           }
         ],
         "geolocation": {
@@ -41,7 +59,7 @@ class NewHotelForm extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    qpx.getInfo(this.reqBody(this.state.budget, this.state.checkIn, this.state.checkOut, this.state.adults, this.state.children), function(error, flights){
+    qpx.getInfo(this.reqBody(this.state.budget, this.state.checkIn, this.state.checkOut, this.state.adults, this.state.children), function(error, hotels){
 
     let trips = []
 
@@ -59,7 +77,7 @@ class NewHotelForm extends Component {
       h["destination"] = trip["slice"][0]["segment"][0]["leg"][0]["destination"]
       trips.push(h)
     })
-    console.log(trips)
+    console.log(hotels)
   })
   }
 
@@ -76,9 +94,6 @@ class NewHotelForm extends Component {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            grant_type: 'password',
-            username: 'user_name',
-            password: "user_password"
           })
         })
 
@@ -89,17 +104,23 @@ class NewHotelForm extends Component {
     <form onSubmit={this.handleSubmit.bind(this)}>
       budget:
       <input type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}}/><br />
-      Number of Guests:
-      <input type='numeric' onChange={(e)=>this.setState({numOfGuests: e.target.value})}/><br />
-      Origin:
-			<input type='text' onChange={(e)=>this.setState({origin: e.target.value})}/><br />
-			Departure Date:
-			<input type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/><br />
-			Arrival Date:
-			<input type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/><br />
-			<button type='submit'>submit</button>
-		</form>
-	);
+      check in Date:
+      <input type='date' onChange={(e)=>this.setState({checkIn: e.target.value})}/><br />
+      checkOut Date:
+      <input type='date' onChange={(e)=>this.setState({checkOut: e.target.value})}/><br />
+      Number of Rooms:
+      <input type='date' onChange={(e)=>this.setState({numRooms: e.target.value})}/><br />
+      Number of Adults:
+      <input type='numeric' onChange={(e)=>this.setState({adults: e.target.value})}/><br />
+      Number of children:
+      <input type='numeric' onChange={(e)=>this.setState({children: e.target.value})}/><br />
+      longitude:
+      <input type='date' onChange={(e)=>this.setState({longitude: e.target.value})}/><br />
+      latitude Date:
+      <input type='date' onChange={(e)=>this.setState({latitude: e.target.value})}/><br />
+      <button type='submit'>submit</button>
+    </form>
+  );
 }
 
 
