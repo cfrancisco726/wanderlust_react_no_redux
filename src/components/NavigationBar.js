@@ -10,16 +10,17 @@ export default () => {
         <a className="navbar-brand" href="#">logo</a>
         <ul className="nav navbar-nav navbar-right">
           <li><Link to="/signup"> Sign up</Link></li>
+          <li><Link to="/login"> Log in</Link></li>
         </ul>
         </div>
 
         <div className="collapse navbar-collapse">
           <ul className="nav navbar-nav navbar-right">
             <li><Link to="/signup"> Sign up</Link></li>
+            <li><Link to="/login"> Log in</Link></li>
           </ul>
         </div>
       </div>
     </nav>
-
-    )
+  )
 }

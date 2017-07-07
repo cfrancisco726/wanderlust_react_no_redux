@@ -6,28 +6,18 @@ import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 
-const SignUpForm = ({
+const LoginForm = ({
   onSubmit,
   onChange,
   errors,
-  user,
+  user
 }) => (
-  <MuiThemeProvider>
+<MuiThemeProvider>
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+      <h2 className="card-heading">Login</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
-          name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
-        />
-      </div>
 
       <div className="field-line">
         <TextField
@@ -51,7 +41,7 @@ const SignUpForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <RaisedButton type="submit" label="Log in" primary />
       </div>
 
 
@@ -60,11 +50,11 @@ const SignUpForm = ({
 </MuiThemeProvider>
 );
 
-SignUpForm.propTypes = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
 };
 
-export default SignUpForm;
+export default LoginForm;
