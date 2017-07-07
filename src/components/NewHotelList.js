@@ -2,7 +2,7 @@ import React, {Component, PropTypes}  from 'react';
 import Request                        from 'superagent';
 
 
-class NewHotelForm extends Component {
+class NewHotelList extends Component {
   constructor(){
     super();
     this.state = {

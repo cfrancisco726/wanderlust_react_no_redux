@@ -7,7 +7,7 @@ import NewTripForm from "./components/NewTripForm"
 import Logo from "./components/logo"
 
 
-import NewHotelList from "./components/NewHotelList"
+// import NewHotelList from "./components/NewHotelList"
 
 
 import NavigationBar from './components/navigationBar';
@@ -33,41 +33,25 @@ var qpx = new API(apiKey);
 
 
 
-class Index extends Component {
+// class Index extends Component {
 
 
-	render() {
-	return (
-		<div>
-		<Logo />
-		<NewTripForm />
-  <Router>
-		<App />
-	</Router>
-	</div>
-	);
+// 	render() {
+// 	return (
+// 		<div>
+//   <Router>
+// 		<App />
+// 	</Router>
+// 	</div>
+// 	);
 
-}
-}
+// }
+// }
 
-class App extends Component {
-
-
-	render() {
-		return (
-			<div>
-				<NewTripForm />
-			</div>
-				<div>
-					<NewHotelList />
-			</div>
-		);
-	}
-}
 
 ReactDom.render(
 	<BrowserRouter>
-		<App/>
+		<App />
 	</BrowserRouter>, document.querySelector('.container'));
 
 
