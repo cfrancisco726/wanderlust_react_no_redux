@@ -21,7 +21,7 @@ const Main = () => (
 
       <Route path="/login" component={LoginPage} />
       <Route path="/" component={NewTripForm} />
-
+  
     </Switch>
   </main>
 )
@@ -45,6 +45,7 @@ class App extends Component{
       <br/>
       <br/>
       <Main/>
+
         <hr />
 
         <h2 className="color">Choose your destiny:</h2>

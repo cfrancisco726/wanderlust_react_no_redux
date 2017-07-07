@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { browserHistory } from 'react-router';
-
+import {browserHistory} from 'react-router';
 
 const API_KEY = 'AIzaSyBW6j4MVKhK1fRRHAc7FI28zn3PBGZO_Wc';
 var API = require('qpx-express');
@@ -50,8 +49,7 @@ class NewTripForm extends Component {
     e.preventDefault();
     this.getApi();
     browserHistory.push('map')
-
-	};
+  };
 
   getApi(){
     qpx.getInfo(this.reqBody(this.state.origin, this.state.departure_date, this.state.arrival_date, this.state.numOfGuests, this.state.budget), function(error, flights){
