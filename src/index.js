@@ -4,6 +4,9 @@ import { Header } from "./components/Header";
 import { Home } from "./components/Home";
 import NewTripForm from "./components/NewTripForm"
 import Logo from "./components/logo"
+import NavigationBar from './components/navigationBar';
+import {Router, browserHistory} from 'react-router';
+import App from "./components/app"
 
 // import FlightSearch from './components/flight_search_form';
 
@@ -19,54 +22,22 @@ var API = require('qpx-express');
 var apiKey = API_KEY;
 var qpx = new API(apiKey);
 
-// function reqBody(a,b,c,d) {
-// 		return("request": {
-// 		    "passengers": { "adultCount": 1 },
-// 		    "slice": [{
-// 		        "origin": 'NYC',
-// 		        "destination": 'LAX',
-// 		        "date": '2017-07-11',
-// 		        "maxStops": 1,
-// 		      },
-// 		      {
-// 		        "origin": 'LAX',
-// 		        "destination": 'NYC',
-// 		        "date": `${d}`
-// 		      }
-// 		    ],
-// 		    "maxPrice": `USD${c}`,
-// 				"solutions": 5
-// 		  }
-// 		)
-// 		};
 
-class App extends Component {
-// 	constructor(props) {
-// 		super(props);
-//
-// 		// this.state = { flights: [] };
-// 		// debugger;
-// 		this.state = {
-// 		isGoing: true,
-// 		numberOfGuests: 2}
-// 		this.handleInputChange = this.handleInputChange.bind(this)
-// }
 
-	// 	qpx.getInfo(body, function(error, flights){
-	// 		console.log(flights.trips);
-	// 		// this.state.length;
-	// 		// this.setState({ flights });
-	// 		// this.setState({ flights: flights }) syntactic sugar above
-	// 	});
-	// }
+class Index extends Component {
+
 
 	render() {
 	return (
 		<div>
 		<Logo />
 		<NewTripForm />
-		</div>
-		);
+  <Router>
+		<App />
+	</Router>
+	</div>
+	);
+
 }
 }
 
@@ -75,7 +46,7 @@ class App extends Component {
 // 	return <div>Hi!</div>;
 // }
 
-
+export default Index
 // Take this comment's generated HTML and put it
 // on the page(in the DOM)
 ReactDom.render(<App />, document.querySelector('.container'))
