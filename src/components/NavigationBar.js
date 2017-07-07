@@ -20,6 +20,5 @@ export default () => {
         </div>
       </div>
     </nav>
-
-    )
+  )
 }
