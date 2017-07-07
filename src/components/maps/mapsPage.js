@@ -28,7 +28,7 @@ class MapsPage extends Component {
 
       return (
         <div>
-          this is the react app
+          
           <div style={{with:300, height:600}}>
              <Map
                 markers = { markers }
