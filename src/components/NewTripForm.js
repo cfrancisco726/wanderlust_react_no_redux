@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {browserHistory} from 'react-router';
 
-const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
+const API_KEY = 'AIzaSyBW6j4MVKhK1fRRHAc7FI28zn3PBGZO_Wc';
 var API = require('qpx-express');
 
 var apiKey = API_KEY;
@@ -47,9 +47,9 @@ class NewTripForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.getApi();
     browserHistory.push('map')
-
-	};
+  };
 
   getApi(){
     qpx.getInfo(this.reqBody(this.state.origin, this.state.departure_date, this.state.arrival_date, this.state.numOfGuests, this.state.budget), function(error, flights){
@@ -76,19 +76,33 @@ class NewTripForm extends Component {
 
   render() {
 	return (
-		<form onSubmit={this.handleSubmit.bind(this)}>
-			budget:
-			<input type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}}/><br />
-			Number of Guests:
-			<input type='numeric' onChange={(e)=>this.setState({numOfGuests: e.target.value})}/><br />
-			Origin:
-			<input type='text' onChange={(e)=>this.setState({origin: e.target.value})}/><br />
-			Departure Date:
-			<input type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/><br />
-			Arrival Date:
-			<input type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/><br />
-			<button type='submit'>submit</button>
-		</form>
+    <div align="center" id="parent">
+		<form id="form_login" onSubmit={this.handleSubmit.bind(this)}>
+			<div className="form-group col-xs-6">
+      <label className="control-label color">Budget:</label>
+			<input className="form-control" type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}}/>
+      </div>
+      <div className="form-group col-xs-6">
+      <label className="control-label color">Number of Guests:</label>
+			<input className="form-control" type='numeric' onChange={(e)=>this.setState({numOfGuests: e.target.value})}/>
+      </div>
+      <div className="form-group col-xs-6">
+      <label className="control-label color">Origin:</label>
+			<input className="form-control" type='text' onChange={(e)=>this.setState({origin: e.target.value})}/>
+      </div>
+      <div className="form-group col-xs-6">
+      <label className="control-label color">Departure Date:</label>
+			<input className="form-control" type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/>
+      </div>
+      <div className="form-group col-xs-6">
+      <label className="control-label color">Arrival Date:</label>
+			<input className="form-control" type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/>
+      </div>
+      <div className="form-group">
+      <button className="btn btn-primary btn-lg" type='submit'>submit</button>
+		  </div>
+    </form>
+    </div>
 	);
 }
 

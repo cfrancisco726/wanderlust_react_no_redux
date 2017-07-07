@@ -6,6 +6,9 @@ import { Header } from "./Header";
 import { Home } from "./Home";
 import {Switch, Route, IndexRoute, Link } from 'react-router-dom';
 import SignupPage from './signup/SignupPage'
+
+import Logo from './logo'
+
 import LoginPage from './signup/LoginPage'
 
 
@@ -13,9 +16,12 @@ const Main = () => (
   <main>
     <Switch>
       <Route path="/signup" component={SignupPage} />
+
+       <Route path="/map" component={MapsPage}/>
+
       <Route path="/login" component={LoginPage} />
       <Route path="/" component={NewTripForm} />
-      <Route path="/map" component={MapsPage} />
+  
     </Switch>
   </main>
 )
@@ -25,10 +31,28 @@ class App extends Component{
     return(
     <div>
       <NavigationBar />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <Main/>
 
+        <hr />
 
+        <h2 className="color">Choose your destiny:</h2>
+
+      <NewTripForm />
     </div>
+
       )
   }
 }
