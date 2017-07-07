@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
+import { browserHistory } from 'react-router';
 
 
-const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
+const API_KEY = 'AIzaSyBW6j4MVKhK1fRRHAc7FI28zn3PBGZO_Wc';
 var API = require('qpx-express');
 
 var apiKey = API_KEY;
@@ -48,6 +49,8 @@ class NewTripForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.getApi();
+    browserHistory.push('map')
+
 	};
 
   getApi(){

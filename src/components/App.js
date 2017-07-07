@@ -12,8 +12,12 @@ const Main = () => (
   <main>
     <Switch>
       <Route path="/signup" component={SignupPage} />
+
+       <Route path="/map" component={MapsPage}/>
+
       <Route path="/login" component={LoginPage} />
       <Route path="/" component={NewTripForm} />
+
     </Switch>
   </main>
 )
@@ -27,6 +31,7 @@ class App extends Component{
         <hr />
         <h2>trip it</h2>
 
+        <NewTripForm />
     </div>
       )
   }
