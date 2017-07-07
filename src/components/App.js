@@ -8,12 +8,14 @@ import {Switch, Route, IndexRoute, Link } from 'react-router-dom';
 import SignupPage from './signup/SignupPage'
 import LoginPage from './signup/LoginPage'
 
+
 const Main = () => (
   <main>
     <Switch>
       <Route path="/signup" component={SignupPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/" component={NewTripForm} />
+      <Route path="/map" component={MapsPage} />
     </Switch>
   </main>
 )
@@ -24,8 +26,7 @@ class App extends Component{
     <div>
       <NavigationBar />
       <Main/>
-        <hr />
-        <h2>trip it</h2>
+
 
     </div>
       )
