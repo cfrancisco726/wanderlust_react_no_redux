@@ -6,7 +6,11 @@ import { Header } from "./Header";
 import { Home } from "./Home";
 import {Switch, Route, IndexRoute, Link } from 'react-router-dom';
 import SignupPage from './signup/SignupPage'
+
+import Logo from './logo'
+
 import LoginPage from './signup/LoginPage'
+
 
 const Main = () => (
   <main>
@@ -27,12 +31,27 @@ class App extends Component{
     return(
     <div>
       <NavigationBar />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <Main/>
         <hr />
-        <h2>trip it</h2>
 
-        <NewTripForm />
+        <h2 className="color">Choose your destiny:</h2>
+
+      <NewTripForm />
     </div>
+
       )
   }
 }
