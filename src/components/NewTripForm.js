@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
+
 const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
 var API = require('qpx-express');
 
@@ -18,6 +19,7 @@ class NewTripForm extends Component {
       flights: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getApi = this.getApi.bind(this)
 
   }
 
@@ -26,12 +28,12 @@ class NewTripForm extends Component {
           "passengers": { "adultCount": parseInt(`${numOfGuests}`) },
           "slice": [{
               "origin": `${origin}`,
-              "destination": 'LAX',
+              "destination": ['LAX','DEN'],
               "date": `${departure_date}`,
               "maxStops": 0,
             },
             {
-              "origin": 'LAX',
+              "origin": ['LAX','DEN'],
               "destination": `${origin}`,
               "date": `${arrival_date}`
             }
@@ -43,16 +45,16 @@ class NewTripForm extends Component {
     )
     };
 
-  handleSubmit(e){
-    e.preventDefault()
+  handleSubmit(e) {
+    e.preventDefault();
+    this.getApi();
+	};
+
+  getApi(){
     qpx.getInfo(this.reqBody(this.state.origin, this.state.departure_date, this.state.arrival_date, this.state.numOfGuests, this.state.budget), function(error, flights){
-
     let trips = []
-
     flights["trips"]["tripOption"].forEach(function(trip){
-
       let h = {}
-
       h["saleTotal"]= trip["saleTotal"]
       h["carrier"] = trip["slice"][0]["segment"][0]["flight"]["carrier"]
       h["arrival_time_when_leaving_home"] = trip["slice"][0]["segment"][0]["leg"][0]["arrivalTime"]
@@ -63,9 +65,10 @@ class NewTripForm extends Component {
       h["destination"] = trip["slice"][0]["segment"][0]["leg"][0]["destination"]
       trips.push(h)
     })
-    console.log(trips)
-  })
-	}
+    this.setState({flights: trips});
+    console.log(this.state.flights);
+  }.bind(this));
+  }
 
 
 
