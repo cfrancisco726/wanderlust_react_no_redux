@@ -5,7 +5,9 @@ import MapsPage from './maps/mapsPage'
 import { Header } from "./Header";
 import { Home } from "./Home";
 import {Switch, Route, IndexRoute, Link } from 'react-router-dom';
-import SignupPage from './signup/SignupPage'
+import SignupPage from './signup/SignupPage';
+import SearchPlaces from './GooglePlacesFind';
+
 
 import Logo from './logo'
 
@@ -21,7 +23,8 @@ const Main = () => (
 
       <Route path="/login" component={LoginPage} />
       <Route path="/" component={NewTripForm} />
-
+      <Route path="/SearchPlaces" component={SearchPlaces} />
+  
     </Switch>
   </main>
 )
@@ -46,9 +49,7 @@ class App extends Component{
       <br/>
       <h2 className="color">Choose your destiny:</h2>
       <Main/>
-      <MapsPage />
         <hr />
-
     </div>
 
       )

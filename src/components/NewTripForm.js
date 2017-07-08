@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+
 import {withRouter} from 'react-router';
 import {browserHistory} from 'react-router-dom';
 import MapsPage from './maps/mapsPage'
@@ -48,6 +49,9 @@ class NewTripForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    this.getApi();
+    browserHistory.push('map')
     // this.getApi();
     this.setState({flights: [
       {
