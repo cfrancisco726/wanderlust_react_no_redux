@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import { browserHistory } from 'react-router';
-
+import {withRouter} from 'react-router';
+import {browserHistory} from 'react-router-dom';
+import MapsPage from './maps/mapsPage'
 
 const API_KEY = 'AIzaSyBW6j4MVKhK1fRRHAc7FI28zn3PBGZO_Wc';
 var API = require('qpx-express');
@@ -21,7 +22,6 @@ class NewTripForm extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getApi = this.getApi.bind(this)
-
   }
 
   reqBody(origin, departure_date, arrival_date, numOfGuests, budget) {
@@ -48,10 +48,23 @@ class NewTripForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.getApi();
-    browserHistory.push('map')
-
-	};
+    // this.getApi();
+    this.setState({flights: [
+      {
+          location:{
+            lat: 40.730610,
+            lng: -73.935242
+          }
+      },
+      {
+          location:{
+            lat: 4.624335,
+            lng:  -74.063644
+          }
+      }
+    ]})
+    // this.props.router.history.push('/map')
+  };
 
   getApi(){
     qpx.getInfo(this.reqBody(this.state.origin, this.state.departure_date, this.state.arrival_date, this.state.numOfGuests, this.state.budget), function(error, flights){
@@ -68,9 +81,8 @@ class NewTripForm extends Component {
       h["destination"] = trip["slice"][0]["segment"][0]["leg"][0]["destination"]
       trips.push(h)
     })
-    this.setState({flights: trips});
-    console.log(this.state.flights);
-  }.bind(this));
+      this.setState({flights: trips});
+    }.bind(this));
   }
 
 
@@ -104,11 +116,10 @@ class NewTripForm extends Component {
       <button className="btn btn-primary btn-lg" type='submit'>submit</button>
 		  </div>
     </form>
+    <MapsPage flightInfo={this.state.flights} />
     </div>
-	);
+  	);
+  }
 }
 
-
-}
-
-export default NewTripForm
+export default NewTripForm;
