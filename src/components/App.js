@@ -47,10 +47,9 @@ class App extends Component{
       <br/>
       <br/>
       <br/>
+      <h2 className="color">Choose your destiny:</h2>
       <Main/>
-
         <hr />
-
     </div>
 
       )

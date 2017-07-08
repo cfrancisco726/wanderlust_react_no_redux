@@ -29,6 +29,7 @@
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
     "bcrypt": "^1.0.2",
+    "jsonwebtoken": "^7.4.1",
     "classnames": "^2.2.5",
     "google-places": "0.0.2",
     "jsonwebtoken": "^7.4.1",

@@ -4,8 +4,16 @@ import Map from './Map'
 
 
 class MapsPage extends Component {
-  render() {
 
+  constructor(){
+    super();
+    this.state = {
+      flights: []
+    }
+  }
+
+  render() {
+      console.log(this.props.flightInfo)
       const location = {
           lat: 40.730610,
           lng: -73.935242
@@ -27,8 +35,9 @@ class MapsPage extends Component {
       ]
 
       return (
+
+
         <div>
-          
           <div style={{with:300, height:600}}>
              <Map
                 markers = { markers }

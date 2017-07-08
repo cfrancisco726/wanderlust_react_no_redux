@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-// import { Header } from "./components/Header";
-// import { Home } from "./components/Home";
 import NewTripForm from "./components/NewTripForm"
-
 import Logo from "./components/logo"
 
-
-// import NewHotelList from "./components/NewHotelList"
-
+import NewHotelList from "./components/NewHotelList"
 
 import NavigationBar from './components/navigationBar';
 import {BrowserRouter} from 'react-router-dom';
 import App from "./components/app";
 import SignupPage from './components/signup/SignupPage'
+
 
 const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
 
@@ -40,12 +36,8 @@ class Index extends Component {
 
 	}
 }
+
 ReactDom.render(
 	<BrowserRouter>
 		<App/>
 	</BrowserRouter>, document.querySelector('.container'));
-
-
-
-
-
