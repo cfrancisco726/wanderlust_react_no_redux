@@ -12,7 +12,7 @@ import Logo from './logo'
 import LoginPage from './signup/LoginPage'
 
 
-const Main = () => (
+export const Main = () => (
   <main>
     <Switch>
       <Route path="/signup" component={SignupPage} />
@@ -48,7 +48,6 @@ class App extends Component{
       <Main/>
       <MapsPage />
         <hr />
-
     </div>
 
       )

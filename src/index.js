@@ -9,7 +9,41 @@ import App from "./components/app";
 import SignupPage from './components/signup/SignupPage'
 
 
+
+// import FlightSearch from './components/flight_search_form';
+
+// import FlightList from './components/flight_list';
+// import FlightDetail from './components/flight_detail';
+
+
+
+const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
+
+var API = require('qpx-express');
+
+var apiKey = API_KEY;
+var qpx = new API(apiKey);
+
+
+
+// class Index extends Component {
+
+
+// 	render() {
+// 	return (
+// 		<div>
+//   <Router>
+// 		<App />
+// 	</Router>
+// 	</div>
+// 	);
+
+// }
+// }
+
+
+
 ReactDom.render(
 	<BrowserRouter>
-		<App/>
+		<App />
 	</BrowserRouter>, document.querySelector('.container'));
