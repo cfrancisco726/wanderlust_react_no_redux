@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {browserHistory} from 'react-router';
+import MapsPage from './maps/mapsPage'
 
 const API_KEY = 'AIzaSyBW6j4MVKhK1fRRHAc7FI28zn3PBGZO_Wc';
 var API = require('qpx-express');
@@ -48,7 +49,7 @@ class NewTripForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.getApi();
-    browserHistory.push('map')
+  
   };
 
   getApi(){
@@ -102,7 +103,9 @@ class NewTripForm extends Component {
       <button className="btn btn-primary btn-lg" type='submit'>submit</button>
 		  </div>
     </form>
+    <MapsPage flightInfo={this.state.flights}/>
     </div>
+
 	);
 }
 
