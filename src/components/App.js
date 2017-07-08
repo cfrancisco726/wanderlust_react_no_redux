@@ -44,14 +44,10 @@ class App extends Component{
       <br/>
       <br/>
       <br/>
+      <h2 className="color">Choose your destiny:</h2>
       <Main/>
-
+      <MapsPage />
         <hr />
-
-        <h2 className="color">Choose your destiny:</h2>
-
-      <NewTripForm />
-          <MapsPage />
 
     </div>
 
