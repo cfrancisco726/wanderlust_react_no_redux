@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import Map from './Map'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Map from './Map';
+import NavigationBar from '../NavigationBar';
 
 
 class MapsPage extends Component {
@@ -28,6 +29,7 @@ class MapsPage extends Component {
 
       return (
         <div>
+          <NavigationBar/>
           this is the react app
           <div style={{with:300, height:600}}>
              <Map

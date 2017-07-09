@@ -3,12 +3,11 @@ import ReactDom from 'react-dom';
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
 import NewTripForm from "./components/NewTripForm"
-import NavigationBar from './components/navigationBar';
-import {BrowserRouter} from 'react-router-dom';
-import App from "./components/app";
-import SignupPage from './components/signup/SignupPage'
-
-
+import NavigationBar from './components/NavigationBar';
+import routes from "./components/App";
+import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 
 
 // import FlightSearch from './components/flight_search_form';
@@ -34,9 +33,11 @@ var qpx = new API(apiKey);
 
 // export default Index;
 
+const store = configureStore({});
+
 ReactDom.render(
-	<BrowserRouter>
-		<App/>
-	</BrowserRouter>, document.querySelector('.container'));
+ <Provider store={store}>
+	<Router history={browserHistory}>{routes}</Router>
+  </Provider>, document.querySelector('.container'));
 
 // one component per file

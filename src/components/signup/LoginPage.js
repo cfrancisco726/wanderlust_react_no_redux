@@ -1,5 +1,10 @@
 import React, { PropTypes } from 'react';
 import LoginForm from './LoginForm';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import NavigationBar from '../NavigationBar';
+import Auth from '../../modules/Auth';
+import loginAction from '../../actions/loginActions';
 
 
 class LoginPage extends React.Component {
@@ -50,10 +55,18 @@ class LoginPage extends React.Component {
               errors: {}
             });
 
+            const token = xhr.response.session_token;
+            const username = xhr.response.name;
+            Auth.authenticateUser(token)
+            window.localStorage.setItem('name', username);
+            const data = {token, username};
+            this.props.login(data);
+            browserHistory.push('/')
             console.log('The form is valid');
           } else {
             // failure
-
+            this.props.login();
+            browserHistory.push('/login')
             // change the component state
             const errors = xhr.response.errors ? xhr.response.errors : {};
             errors.summary = xhr.response.message;
@@ -87,15 +100,29 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
+    <div>
+      <NavigationBar/>
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
       />
+      </div>
     );
   }
 
 }
+const mapStoreToProps = (state) => {
+  return {
+    // signUpSuccess: state.signUpReducer.success,
+    // signUpError: state.signUpReducer.error,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: userDetails => dispatch(loginAction(userDetails))
+  };
+};
 
-export default LoginPage;
+export default connect(mapStoreToProps, mapDispatchToProps)(LoginPage);

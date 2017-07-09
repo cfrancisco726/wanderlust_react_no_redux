@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {browserHistory} from 'react-router';
+import NavigationBar from './NavigationBar';
 
 const API_KEY = 'AIzaSyCEodSzpD3t7d7_Bvk076631LTmITGVKfs';
 var API = require('qpx-express');
@@ -76,19 +77,22 @@ class NewTripForm extends Component {
 
   render() {
 	return (
-		<form onSubmit={this.handleSubmit.bind(this)}>
-			budget:
-			<input type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}}/><br />
-			Number of Guests:
-			<input type='numeric' onChange={(e)=>this.setState({numOfGuests: e.target.value})}/><br />
-			Origin:
-			<input type='text' onChange={(e)=>this.setState({origin: e.target.value})}/><br />
-			Departure Date:
-			<input type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/><br />
-			Arrival Date:
-			<input type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/><br />
-			<button type='submit'>submit</button>
-		</form>
+   <div>
+    <NavigationBar/>
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        budget:
+        <input type='numeric' onChange={(e)=>{this.setState({budget: e.target.value})}}/><br />
+        Number of Guests:
+        <input type='numeric' onChange={(e)=>this.setState({numOfGuests: e.target.value})}/><br />
+        Origin:
+        <input type='text' onChange={(e)=>this.setState({origin: e.target.value})}/><br />
+        Departure Date:
+        <input type='date' onChange={(e)=>this.setState({departure_date: e.target.value})}/><br />
+        Arrival Date:
+        <input type='date' onChange={(e)=>this.setState({arrival_date: e.target.value})}/><br />
+        <button type='submit'>submit</button>
+      </form>
+    </div>
 	);
 }
 
